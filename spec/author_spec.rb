@@ -22,11 +22,17 @@ RSpec.describe Author do
 
   describe "#author can write books" do
     it 'can write books' do
-      expect(charlotte_bronte.write("Villette", "1853")).to be_a Book
+      jane_eyre = charlotte_bronte.write("Jane Eyre", "October 16, 1847")
+
+      expect(jane_eyre.class).to eq(Book)
+      expect(jane_eyre.title).to eq("Jane Eyre")
     end
 
-    it 'books can be added to the array'
-    charlotte_bronte.write("Villette", "1853")
-    books << Villette
+    it 'books can be added to the array' do
+      jane_eyre = charlotte_bronte.write("Jane Eyre", "October 16, 1847")
+      villette = charlotte_bronte.write("Villette", "1853")
+      
+      expect(charlotte_bronte.books).to eq([jane_eyre, villette])
+    end
   end
 end
